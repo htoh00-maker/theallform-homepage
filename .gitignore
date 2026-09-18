@@ -1,0 +1,10 @@
+# 검토/스크린샷 산출물 (재생성 가능, 커밋 불필요)
+site/_scripts/shots/
+site/server.log
+
+__pycache__/
+*.pyc
+
+# OS
+Thumbs.db
+.DS_Store
