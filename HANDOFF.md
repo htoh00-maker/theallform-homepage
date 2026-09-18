@@ -1,22 +1,26 @@
 # 인수인계 — 더올포엠(THE ALLFORM) 홈페이지 리뉴얼
 
-작성일: 2026-09-18 (업데이트: 2026-09-18 — 컷팅제품 페이지 추가, git 저장소 초기화)
+작성일: 2026-09-18 (업데이트: 2026-09-18 — 컷팅제품 페이지 추가, GitHub 저장소 연결)
 
 ## 🔁 다른 컴퓨터(노트북)에서 이어가기
 
-이 폴더(`Project/homepage/`)는 방금 `git init` 했습니다(AFM·easytalk 프로젝트와 같은 방식).
-**아직 GitHub 원격 저장소는 없습니다** — `gh` CLI가 이 환경에 설치되어 있지 않아
-원격 생성/푸시는 못 했고, 로컬 커밋까지만 되어 있습니다.
+이 폴더(`Project/homepage/`)는 git으로 관리되며, GitHub 원격 저장소에 연결되어 있습니다:
 
-**이어서 하려면 다음 중 하나가 필요합니다:**
+**https://github.com/htoh00-maker/theallform-homepage** (Private)
 
-1. **(권장) GitHub 원격 저장소 연결** — easytalk과 동일한 방식으로 쓰려면:
-   - github.com에서 새 저장소 생성(예: `htoh00-maker/theallform-homepage`, Private 권장 — 미공개 회사 자재/사진 포함)
-   - 이 컴퓨터에서: `git remote add origin <저장소주소>` → `git push -u origin main`
-   - 노트북에서는 `Project/다른 컴퓨터에서 작업하는 방법.txt`에 정리된 절차 그대로:
-     `git clone <저장소주소>` (최초 1회) → 작업 전 `git pull` → 작업 후 `git add -A && git commit -m "..." && git push`
-   - 저장소 생성·최초 push는 계정 관련 작업이라 제가 임의로 진행하지 않았습니다. 원하시면 저장소 이름/공개여부만 정해주세요, 이어서 처리하겠습니다.
-2. **(대안) 폴더 통째로 복사** — `Project/homepage/` 전체(7.5MB, 가벼움)를 USB·클라우드 동기화 등으로 옮기면 git 없이도 그대로 열립니다. 다만 이 경우 두 컴퓨터의 변경 이력이 자동으로 합쳐지지 않으니, 항상 최신 폴더 하나만 기준으로 작업하세요(웹사이트 업로드로 통째로 덮어쓰지 말 것 — 위 메모 파일의 경고와 같은 이유).
+노트북에서는 `Project/다른 컴퓨터에서 작업하는 방법.txt`에 정리된 절차와 완전히 동일합니다:
+
+```
+git clone https://github.com/htoh00-maker/theallform-homepage.git   # 최초 1회
+cd theallform-homepage
+git pull                                                             # 작업 시작 전 매번
+# ...작업...
+git add -A
+git commit -m "변경 내용 설명"
+git push
+```
+
+GitHub 웹사이트의 "Add file → Upload files"로 통째로 올리지 말 것 — 위 메모 파일과 같은 이유입니다.
 
 **노트북에도 같이 있어야 이번 작업(스킬 활용)이 재현되는 것들 — 위 `Project/homepage/` 자체보다 훨씬 큼:**
 
