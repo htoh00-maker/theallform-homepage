@@ -1,5 +1,6 @@
 # 검토/스크린샷 산출물 (재생성 가능, 커밋 불필요)
 site/_scripts/shots/
+site-v2/_qa/
 site/server.log
 
 __pycache__/
@@ -8,3 +9,9 @@ __pycache__/
 # OS
 Thumbs.db
 .DS_Store
+
+# 중앙일보 기사 사진 — 검토용(저작권 중앙일보), 커밋·공개 금지
+site-v2/assets/img/_검토용_중앙일보/
+
+# 중앙일보 기사 사진 보관본 — 저작권 중앙일보, 커밋·공개 금지
+_archive/중앙일보_인월사_기사사진_검토용/

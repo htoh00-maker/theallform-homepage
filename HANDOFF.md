@@ -4,7 +4,7 @@
 
 ## 🔁 다른 컴퓨터(노트북)에서 이어가기
 
-이 폴더(`Project/homepage/`)는 git으로 관리되며, GitHub 원격 저장소에 연결되어 있습니다:
+이 폴더(`Project/Design Form/homepage/`)는 git으로 관리되며, GitHub 원격 저장소에 연결되어 있습니다:
 
 **https://github.com/htoh00-maker/theallform-homepage** (Private)
 
@@ -22,14 +22,14 @@ git push
 
 GitHub 웹사이트의 "Add file → Upload files"로 통째로 올리지 말 것 — 위 메모 파일과 같은 이유입니다.
 
-**노트북에도 같이 있어야 이번 작업(스킬 활용)이 재현되는 것들 — 위 `Project/homepage/` 자체보다 훨씬 큼:**
+**노트북에도 같이 있어야 이번 작업(스킬 활용)이 재현되는 것들 — 위 `Project/Design Form/homepage/` 자체보다 훨씬 큼:**
 
 | 경로 | 용도 | 용량 | 없으면 생기는 일 |
 |---|---|---|---|
-| `Project/.claude/skills/theallform-visual-marketing-skill/` | 브랜드 톤·제품 스펙·실제 브로셔/제품사진 자산, Claude Code가 스킬로 인식하는 근거 | 약 248MB | Skill 도구로 호출은 되지만 실물 자산(브로셔 PDF, 제품 컷아웃 등) 없이 텍스트 규칙만 참고하게 됨 |
+| `.claude/skills/theallform-visual-marketing/` (볼트 루트) | 브랜드 톤·제품 스펙·실제 브로셔/제품사진 자산, Claude Code가 스킬로 인식하는 근거 | 약 248MB | Skill 도구로 호출은 되지만 실물 자산(브로셔 PDF, 제품 컷아웃 등) 없이 텍스트 규칙만 참고하게 됨 |
 | `F:\사진 모음\` (Project 폴더 밖, 별도 보관) | 원본 고해상도 시공사진 — `prepare_images.py`가 여기서 리사이즈해 옴 | 수 GB 추정 | 이미 만든 이미지는 그대로 보이지만, **새 사진을 더 넣거나 교체하려면 이 폴더가 있어야 함** |
 
-- 루트에 있는 `theallform-visual-marketing-skill.zip`은 **오래된 백업이라 이번 작업에 못 씁니다** — SKILL.md와 references만 들어있고, 실제 자산 폴더(`assets/brochures`, `assets/products` 등)와 `scripts/`, GPT API 키 파일이 빠져 있습니다. 새로 압축하려면 스킬 폴더 전체를 다시 압축해야 합니다.
+- `_archive/구버전_스킬백업/theallform-visual-marketing-skill.zip`(2026-09-30 루트에서 이동)은 **오래된 백업이라 이번 작업에 못 씁니다** — SKILL.md와 references만 들어있고, 실제 자산 폴더(`assets/brochures`, `assets/products` 등)와 `scripts/`, GPT API 키 파일이 빠져 있습니다. 새로 압축하려면 스킬 폴더 전체를 다시 압축해야 합니다.
 - 스크립트(`prepare_images.py`)에 `F:\...` 절대경로가 하드코딩되어 있습니다. 노트북에서 드라이브 문자가 다르면(F: 드라이브가 없다면) 스크립트 상단의 경로 상수만 노트북 경로로 바꿔주면 됩니다.
 
 ## 지금 상태
@@ -46,15 +46,54 @@ GitHub 웹사이트의 "Add file → Upload files"로 통째로 올리지 말 �
 `F:\사진 모음\컷팅제품`, `F:\사진 모음\미팅용 사진 정리\컷팅벽돌_타일`에서
 선별해 사용. Playwright로 데스크톱/모바일 스크린샷 재검증 완료(정상).
 
+**2026-09-30 — 테슬라식 메인 시안 `site-v2/` 추가** (기존 `site/`는 그대로 둠)
+- tesla.com/ko_KR 레이아웃 문법 참고: 풀스크린 사진 섹션 + 위 제목/아래 버튼 2개,
+  스크롤 스냅, 투명 상단 메뉴(섹션 밝기에 따라 글자색 전환), 모바일 우측 드로어.
+- 섹션: 첫 화면 → 와이드벽돌 → 와이드타일 → 디자인블록 → 컬러 → 컷팅제품 → 시공사례(좌우 넘기기) → 상담+푸터.
+- 사진: `Project/Design Form/포트폴리오_보정/웹용_sRGB`(수직·톤 보정, 건물색 유지 검사 통과본).
+  제품명·현장 캡션은 브로셔 `포트폴리오 추춘.pdf` 원문에서 확인한 값만 사용.
+  이미지 재생성: `python site-v2/_scripts/prepare_images.py` (2400/1200px).
+- 점검: `python site-v2/_scripts/qa_screens.py` → `site-v2/_qa/`(1440×900, 390×844). 콘솔 오류·가로 넘침·깨진 이미지 없음.
+- ~~메인만 새로 만듦~~ → 2026-10-15 하위 페이지도 v2 디자인으로 완성(아래).
+- 게시 전 확인 필요: 규격(500·390·340·300 / 타일 500·390)과 컬러명은 현행 카탈로그와 대조, 연락처·사업자정보 입력.
+
+**2026-10-15 — `site-v2/` 하위 페이지 9개 추가** (대문 컨셉 그대로, `../site/` 링크 모두 제거)
+- `products.html`(제품 개요 2×2 사진 타일 + 선택 가이드), `products-wide-brick/-wide-tile/-design-block/-cutting.html`,
+  `projects.html`(필터 + 크게 보기), `about.html`, `resources.html`, `qna.html`(질문 펼치기 + 상담 폼 UI).
+- 문법: 첫 화면 풀스크린 사진(대문의 같은 제품 섹션 사진) + 제목/핵심 수치/버튼 → 흰 바탕 넓은 여백 섹션과 풀스크린 사진 섹션 교차 → 어두운 바탕 사례 넘기기 → 상담·푸터.
+  하위 페이지는 `<html class="sub">`(스크롤 스냅 끔). 섹션의 `data-theme`/`data-gnb="solid"`로 상단 메뉴 색이 바뀜(`main.js`).
+- 캡션은 브로셔 대조값(site-v2) 또는 기존 `site/` 표기만 사용. 기존 `site/`의 "청라동 500 베브라운(벽돌)"은 v2(와이드타일)와 충돌해 제외.
+  새로 쓴 보정본: 중계동 390 매직브라운, 천안 백석대 디자인블록 02 (파일명 기준 — "서울 중계동"으로만 표기).
+- `prepare_images.py` 원본 경로를 `2026 브로셔/포트폴리오_보정/웹용_sRGB`로 수정(10-01 폴더 이동 뒤 끊겨 있었음), 하위 페이지용 이미지 추가 → 48장.
+- 점검: `python site-v2/_scripts/qa_subpages.py` → `site-v2/_qa/sub_*.png`. 18개 화면 콘솔 오류·가로 넘침·깨진 이미지 없음. 대문 `qa_screens.py`도 재확인.
+- 디자인블록 패턴 수(옛 "11종")와 와이드벽돌 색 수(옛 "9색상")는 확인 전이라 새 페이지에서 숫자를 뺐음.
+
+**2026-10-22 — `site-v2/` 글꼴·아이콘 통일** (사용자 지정: 글꼴 Pretendard, 아이콘 Font Awesome)
+- 글꼴은 이미 전 페이지 Pretendard(jsDelivr v1.3.9) — 유지.
+- Font Awesome 6.7.2 Free(cdnjs)를 10개 페이지에 연결. 글자·SVG 아이콘을 교체: 메뉴(fa-bars)·닫기(fa-xmark)·사례 넘기기(fa-chevron-left/right)·아래로(fa-chevron-down)·Q&A 펼치기(CSS `font: var(--fa-font-solid)` + "+")·연락처(fa-phone/envelope/location-dot)·자료실(fa-file-pdf, fa-download).
+- 첫 화면(대문)을 제품 섹션과 구분(사용자 선택: 별도 인트로 페이지 대신 첫 화면만 다르게): `.panel-hero` — 왼쪽 아래 큰 제목 + "THE ALLFORM" + 흰/테두리 버튼, 사진 3장(평창동 500 매직블랙 · 중계동 390 매직브라운 · 백석대 디자인블록 02) 6초마다 천천히 전환·캡션 연동·점 선택(`main.js` 6). 아래 섹션 사진과 겹치지 않게 고름. 움직임 줄이기 설정이면 자동 전환 안 함.
+- 첫 화면을 중앙일보 기사(2026-10-10 「덜 전통적이되 더 본질적 사찰을 짓다」, https://www.joongang.co.kr/article/25468522) 기반으로 교체: 강릉 인월사 '인드라 월'(사용자 확인: 더올포엠 디자인블록 02번 — 2026-11-12 확정) — 제목 "빛과 바람이 지나가는 벽", 기사 링크, 디자인블록 보기 버튼, 사진 3장 자동 전환. 글 쪽(왼쪽·아래)에 어두운 그라데이션.
+  사진은 **자체 촬영본으로 교체 완료**(원본 `F:\AFM\시공사진\임시\인월사`, 14장 중 3장: 곡선 벽 전경 1037 · 근접 색 1560 · 뒷면 빛 1377 → `assets/img/inwolsa-{wall,detail,light}-2400.jpg`(16:10) / `-m-1200.jpg`(3:4 휴대폰)). 14번(2608)은 사람 얼굴이 보여 제외. 중앙일보 사진은 `_archive/중앙일보_인월사_기사사진_검토용/`으로 옮김(사이트에서 안 씀). 기사 링크만 유지.
+- 바꾸기 전 원본: `_archive/site-v2_백업_20261022_아이콘전/` (인월사 전 첫 화면: `index_인월사전.html`·`style_인월사전.css`, 그 전: `index_히어로전.html`, `style_히어로전.css`, `main_히어로전.js`). 다른 사람 검토용 임시 주소는 cloudflared quick tunnel(PC 켜져 있을 때만, 주소 매번 바뀜).
+
+**2026-11-03 — `site-v2/` 제품 상세 4개 페이지를 2026 브로셔 기준으로 개편** (와이드벽돌 · 와이드타일 · 디자인블록 · 컷팅제품)
+- 첫 화면 사진이 메인 대문과 같던 문제 수정: 와이드벽돌 = 브로셔 4쪽(500 매직그레이 · 성남 수정구), 와이드타일 = 8쪽(500 베이비브라운 · 김포 운양동), 컷팅 = 18쪽(컷팅 와이드벽돌 Mix), 디자인블록 = `F:\사진 모음\디자인블록\DB 상세페이지\메인사진최종.png`(누끼 → 밝은 바탕 첫 화면 `.panel-product`).
+- 내용은 브로셔 4~21쪽 원문: 와이드벽돌 특징 4가지(천연 석분 · 산화철 · KS · 발수제 무첨가), 길이별 치수 그림 + 1㎡당 · 1파레트 · 25톤 차량, 6색 설명(매직그린 · 옐로우 주문생산) / 와이드타일 500 · 390 · 코너타일 규격 · 박스 · 팔레트, 6색 + 코너 + Mix / 디자인블록 9종(02 · 03 · 04 · 05 · 06 · 06슬림 · 07 · 09 · 11) 앞 · 뒷면 사진 + 규격 · 중량 · 수량 / 컷팅벽돌 · 컷팅타일 규격표 + 색상칩.
+- 이미지: `python site-v2/_scripts/prepare_brochure_images.py` — 브로셔 PDF(읽기만)에서 글자를 메모리에서 지우고 ICC 색보정으로 잘라냄 → `assets/img/wb-* wt-* db-* cut-*`. 새 CSS: `.panel-product .features .pspecs .pspec .colors .chipset`(style.css 끝). 본문 전체 `word-break: keep-all` 추가.
+- 와이드타일의 옛 문구 "단열재+메쉬+접착제 시공"은 브로셔에 없어 삭제(스킬 자료에도 '확인 전 가정'). 디자인블록의 "조경 담장 · 경관 옹벽" 문구도 브로셔 문구로 교체.
+- 합정동 사진 캡션 **340 → 390 매직레드**로 정정(브로셔 7 · 44쪽. 옛 `포트폴리오 추춘.pdf`는 340 — 실제 확인 필요). index · products · projects 포함.
+- 브로셔 자체 불일치(확인 필요): 19쪽 글은 컷팅타일 "500×50×20T", 21쪽 규격표는 500×40×20T / 500×50×18T / 390×83×18T → 사이트는 규격표 값 사용.
+- 안 쓰게 된 옛 이미지(`block-02.png` 등 5장, `cut-gray/red/black.jpg`)는 남겨둠. 점검: `qa_subpages.py` · `qa_screens.py` 전 페이지 콘솔 오류 · 가로 넘침 · 깨진 이미지 없음.
+
 ## 요청 배경
 
-- 원 요청: `Project/homepage/홈페이지 프롬프트.txt`
+- 원 요청: `Project/Design Form/homepage/홈페이지 프롬프트.txt`
   - 대상: 건축사·건설사·예비건축주
   - 메뉴: 회사소개 / 제품소개 / 시공사례 / 자료실 / Q&A
   - 대표이미지·하위메뉴·제품상세·Q&A를 관리자 페이지에서 수정할 수 있어야 함
   - 기존 사이트(http://theallform.com/)의 이미지/구성은 전면 교체하되, 쓸만한
     고퀄리티 이미지가 있으면 유지 가능
-- 참고 스킬: `Project/.claude/skills/theallform-visual-marketing-skill/`
+- 참고 스킬: `.claude/skills/theallform-visual-marketing/` (볼트 루트)
   (브랜드 톤, 제품 스펙, 디자인 규칙의 근거 자료. 진행 전 `SKILL.md`와
   `references/*.md`를 먼저 읽을 것)
 - 원본 사진/자료: `F:\사진 모음\` (용량이 커서 이 프로젝트 폴더 밖에 별도 보관)
@@ -64,7 +103,7 @@ GitHub 웹사이트의 "Add file → Upload files"로 통째로 올리지 말 �
 
 ## 만든 것
 
-`Project/homepage/site/` — 정적 프로토타입 (빌드 도구 없음, 브라우저로 바로 열림)
+`Project/Design Form/homepage/site/` — 정적 프로토타입 (빌드 도구 없음, 브라우저로 바로 열림)
 
 - 8개 페이지: 홈 / 회사소개 / 제품소개(개요+3개 제품군 서브페이지) / 시공사례
   (필터+라이트박스) / 자료실 / Q&A(아코디언+문의폼 UI)
@@ -114,8 +153,8 @@ GitHub 웹사이트의 "Add file → Upload files"로 통째로 올리지 말 �
 ## 다시 시작할 때 순서
 
 0. (GitHub 원격이 연결된 이후부터) `git pull` 먼저 — 오래된 파일 기반으로 작업 시작하지 말 것
-1. `Project/homepage/site/README.md` 읽기
-2. `cd Project/homepage/site && python -m http.server 8000` 으로 브라우저에서
+1. `Project/Design Form/homepage/site/README.md` 읽기
+2. `cd "Project/Design Form/homepage/site" && python -m http.server 8000` 으로 브라우저에서
    다시 확인 (사용자가 그동안 의견을 남겼을 수 있음)
 3. 위 "아직 안 한 것" 중 사용자에게 확인이 필요한 항목(브랜드 컬러, 회사 정보,
    카페24 요금제)부터 확인

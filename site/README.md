@@ -25,21 +25,22 @@ python -m http.server 8000
 | `resources.html` | 자료실 (다운로드 목록 시안) |
 | `qna.html` | Q&A + 상담문의 폼 |
 
-제품소개 소분류는 요청 프롬프트(`Project/homepage/홈페이지 프롬프트.txt`)대로 와이드벽돌·와이드타일·디자인블록·컷팅제품 4개로 구성했습니다(원 프로토타입은 컷팅제품이 누락되어 있었음 — 홈 히어로 아래 제품군, `products.html` 개요, 전체 페이지 헤더 서브메뉴·푸터에 추가).
+제품소개 소분류는 요청 프롬프트(`Project/Design Form/homepage/홈페이지 프롬프트.txt`)대로 와이드벽돌·와이드타일·디자인블록·컷팅제품 4개로 구성했습니다(원 프로토타입은 컷팅제품이 누락되어 있었음 — 홈 히어로 아래 제품군, `products.html` 개요, 전체 페이지 헤더 서브메뉴·푸터에 추가).
 
 공통 CSS: `assets/css/style.css` · 공통 JS: `assets/js/main.js` (모바일 메뉴, 시공사례 필터, 라이트박스, Q&A 아코디언)
 
 ## 디자인 방향
 
-- `Project/.claude/skills/theallform-visual-marketing-skill/`의 브랜드 자산(로고, 제품 사진, 브랜드 가이드)을 기준으로 설계했습니다.
+- `.claude/skills/theallform-visual-marketing/` (볼트 루트)의 브랜드 자산(로고, 제품 사진, 브랜드 가이드)을 기준으로 설계했습니다.
 - 로고(`assets/brand/logo box-final.jpg`)가 무채색(검정/흰색) + 볼드 산세리프 + 세리프 태그라인 조합이라, **공식 브랜드 컬러가 확인되지 않아 사이트 전체를 무채색 톤**으로 설계했습니다. 색감은 실제 시공사진(벽돌 색상)이 담당합니다. → 공식 브랜드 컬러가 있다면 `assets/css/style.css`의 `:root` 변수만 교체하면 됩니다.
 - 타이포그래피: Pretendard(한글 산세리프, CDN) + Noto Serif KR 스타일의 이탤릭 강조(eyebrow, 인용구).
+- 2026-09-20: 홈(`index.html`)에 한해 참고 테마([Inner – Interior Design & Architecture](https://themeforest.net/item/inner-interior-design-architecture-wordpress-theme/54908606))의 구조를 반영해 리디자인함 — 히어로 위 플로팅 통계 카드, 2단 웰컴+통계 섹션, 넘버링된 진행 프로세스 밴드(다크), 캡션 상시노출 갤러리, 푸터 시공사례 썸네일 컬럼 추가. `--accent`(#9c7a4e) 변수는 실제 벽돌 샘플(`assets/img/products/wide-brick/brown.png`)에서 추출한 색으로, 공식 브랜드 컬러가 아니라 이번 리디자인의 포인트 컬러임. **다른 8개 페이지는 아직 기존(무채색 전용) 스타일 그대로**라 헤더/푸터 톤이 홈과 살짝 다름 — 확산 적용은 다음 라운드 논의 필요.
 
 ## 사용한 실제 자료 (F:\사진 모음)
 
 - `F:\사진 모음\시공사진\Pool`에서 지역/규격/색상이 다양한 10개 현장 사진 1장씩만 선별 → `assets/img/projects/`에 리사이즈(1400px, JPEG)해서 사용.
 - 원본은 10~20MB급이라 전량 웹에 올릴 수 없습니다. 실제 배포 시에는 시공사례 전체 폴더를 검토해 카테고리(지역/제품/색상)별로 정리 후 업로드하는 작업이 필요합니다.
-- 색상 스와치/디자인블록 패턴 이미지는 `theallform-visual-marketing-skill/assets/products/`에서 가져와 리사이즈했습니다.
+- 색상 스와치/디자인블록 패턴 이미지는 `theallform-visual-marketing/assets/products/`에서 가져와 리사이즈했습니다.
 - 컷팅제품 사진은 `F:\사진 모음\미팅용 사진 정리\컷팅벽돌_타일`(실제 시공 현장 2컷 + 히어로 1컷)과 `F:\사진 모음\컷팅제품\180\누끼`(색상별 절단면 스튜디오 컷 3장)에서 선별해 `assets/img/products/cutting/`에 리사이즈했습니다.
 - 리사이즈에 사용한 스크립트: `_scripts/prepare_images.py` (재실행하여 다른 사진을 더 추가할 수 있습니다).
 

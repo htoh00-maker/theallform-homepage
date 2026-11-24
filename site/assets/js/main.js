@@ -55,4 +55,31 @@ document.addEventListener("DOMContentLoaded", () => {
       lightbox.style.display = "flex";
     });
   });
+
+  // count-up for stat numbers (hero float card, intro stat row)
+  const statEls = document.querySelectorAll("[data-count]");
+  if (statEls.length && "IntersectionObserver" in window) {
+    const animate = (el) => {
+      const target = parseInt(el.dataset.count, 10);
+      const suffix = el.dataset.suffix || "";
+      const duration = 900;
+      const start = performance.now();
+      const step = (now) => {
+        const p = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(target * eased) + suffix;
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animate(entry.target);
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.4 });
+    statEls.forEach((el) => io.observe(el));
+  }
 });

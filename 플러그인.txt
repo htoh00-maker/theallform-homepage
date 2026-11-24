@@ -1,0 +1,5 @@
+플러그인 
+
+9/30 설치
+claude plugin install document-skills@anthropic-agent-skills
+claude plugin install example-skills@anthropic-agent-skills

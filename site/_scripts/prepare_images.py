@@ -5,8 +5,8 @@ import os
 from PIL import Image, ImageOps
 
 SRC_POOL = r"F:\사진 모음\시공사진\Pool"
-SRC_BRAND = r"F:\OHT\Ai\LLM Wiki Ux\Project\.claude\skills\theallform-visual-marketing-skill\assets\brand\logo box-final.jpg"
-SRC_PRODUCTS = r"F:\OHT\Ai\LLM Wiki Ux\Project\.claude\skills\theallform-visual-marketing-skill\assets\products"
+SRC_BRAND = r"F:\OHT\Ai\LLM Wiki Ux\.claude\skills\theallform-visual-marketing\assets\brand\logo box-final.jpg"
+SRC_PRODUCTS = r"F:\OHT\Ai\LLM Wiki Ux\.claude\skills\theallform-visual-marketing\assets\products"
 OUT_ROOT = r"F:\OHT\Ai\LLM Wiki Ux\Project\homepage\site\assets\img"
 
 def save_resized(src, dst, max_w, quality=78):

@@ -1,5 +1,5 @@
 무엇을 했나
-기존 Project/homepage/site/ 프로토타입을 감사(Section 7)해보니 구조·톤·실사 활용은 이미 탄탄했지만, 프롬프트가 명시한 "제품소개 4개 소분류(와이드벽돌·와이드타일·디자인블록·컷팅제품)" 중 컷팅제품이 완전히 빠져 있었습니다. 이게 가장 명확하고 확실한 차이였어서, 이번 작업은 전면 재제작이 아니라 이 gap을 정확히 메우는 방향으로 진행했습니다.
+기존 Project/Design Form/homepage/site/ 프로토타입을 감사(Section 7)해보니 구조·톤·실사 활용은 이미 탄탄했지만, 프롬프트가 명시한 "제품소개 4개 소분류(와이드벽돌·와이드타일·디자인블록·컷팅제품)" 중 컷팅제품이 완전히 빠져 있었습니다. 이게 가장 명확하고 확실한 차이였어서, 이번 작업은 전면 재제작이 아니라 이 gap을 정확히 메우는 방향으로 진행했습니다.
 
 추가한 것:
 
@@ -14,7 +14,11 @@ products-cutting.html 신규 페이지 — 규격표(컷팅벽돌 3종 + 컷팅�
 
 미리보기
 
-cd "Project/homepage/site" && python -m http.server 8000
+cd "Project/Design Form/homepage/site" && python -m http.server 8000
 # http://localhost:8000/index.html, /products.html, /products-cutting.html
 그대로 남아있는 미결 사항 (HANDOFF.md 기준, 변동 없음)
 주소/전화/이메일/사업자번호, 공식 브랜드 컬러, 시공사례 전체 큐레이션, 자료실 PDF, Q&A 폼 백엔드, 관리자 페이지(서버+DB 필요) — 전부 이전과 동일하게 플레이스홀더 상태입니다. 이번 라운드는 프롬프트 요구사항과 실제 프로토타입 사이의 구조적 gap만 메운 것이라, 관리자 백엔드 설계에 들어가려면 위 항목들 먼저 확정이 필요합니다.
+
+
+https://gradastudio.com/vara/
+
